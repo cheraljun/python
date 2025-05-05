@@ -1,4 +1,4 @@
-git add AI lxf readme.md
+git add lxf readme.md
 
 git commit -m "更新readme.md"
 
