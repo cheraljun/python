@@ -1,5 +1,4 @@
 import requests
-import time
 
 def loveword():
     apiname = '情话api接口'
@@ -42,11 +41,6 @@ def randomid():
         print(f'{apiname}出现错误, 错误信息: {e}')
         return None
 
-result = loveword()
-print(result)
-
-result = historytoday()
-print(result)
-
-result = randomid()
-print(result)
+print(loveword())
+print(historytoday())
+print(randomid())
