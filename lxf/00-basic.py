@@ -120,14 +120,8 @@ line5''')
 print('示例结束：使用三个单引号表示多行字符串')
 
 # 2.7.4 字符串格式化
-# 格式化用 % 实现
-# %s 表示用字符串替换，%d 表示用整数替换，%f 表示浮点数，%% 来表示一个 %
-# 有几个 %? 占位符，后面就跟几个变量或者值，顺序要对应好。如果只有一个 %?，括号可以省略
-print('示例开始：使用 % 进行字符串格式化')
-print('I have %d cats named %s, %s, %s' % (3, 'miaomiao', 'hei', 'sanmiao'))
-print('示例结束：使用 % 进行字符串格式化')
 
-# 还有一种格式化字符串的方法是使用以 f 开头的字符串，称之为 f-string
+# 以 f 开头的字符串，称之为 f-string
 # 它和普通字符串不同之处在于，字符串如果包含 {xxx}，就会以对应的变量替换
 print('示例开始：使用 f-string 进行字符串格式化')
 wifename = 'cheralchen'
@@ -143,10 +137,7 @@ tyscore = 85
 up = ((tyscore - lyscore) / lyscore) * 100
 
 # f-string 格式化
-print(f'debug...去年成绩{lyscore},今年成绩{tyscore},提升率为{up:.1f}%')
-# 传统 % 格式化
-print('debug...去年成绩%d,今年成绩%d,%.1f%%' % (lyscore, tyscore, up))
-print('示例结束：计算成绩提升率并进行字符串格式化')
+print(f'去年成绩{lyscore},今年成绩{tyscore},提升率为{up:.1f}%')
 
 # 2.8 列表（list）
 # Python内置的一种数据类型是列表：list。list是一种有序的集合，可以随时添加和删除其中的元素
