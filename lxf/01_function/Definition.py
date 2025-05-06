@@ -62,8 +62,7 @@ def double():
             print(f'函数调用成功!\n正在分别计算{x}, {y}, {z}的2倍...\n{x}, {y}, {z}的2倍分别为{x2}, {y2}, {z2}!\n结束函数的执行!\n')
             return(x, y, z)
         except Exception as e:
-            print('???输入的啥?正在检查数据...')
-            print(f'重来!看清楚可用的数据类型: {e}')
+            print(f'???输入的啥?重来!看清楚可用的数据类型: {e}')
 print(f'这是函数的返回值{double()}')
 
 '''

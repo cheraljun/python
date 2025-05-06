@@ -1,123 +1,91 @@
 '''
-参数
-input output
-定义函数的时候, 
-我们把参数的名字和位置确定下来, 
-函数的接口定义就完成了。
-对于函数的调用者来说, 
-只需要知道如何传递正确的参数, 
-以及函数将返回什么样的值就够了
-
-位置参数
-就像经典奶昔的固定配方, 
-数量和顺序都是确定的, 
-调用函数时必须按照顺序传入对应数量的参数值。
-
-位置参数样例：
-make_strawberry_banana_smoothie 函数
-定义了三个位置参数 strawberries、bananas 和 milk。
-调用函数 make_strawberry_banana_smoothie(2, 1, 200) 时, 
-传入的参数值 2、1、200 
-会按照位置
-依次赋值给 strawberries、bananas、milk, 
-就像按照配方依次添加原料一样。
-如果调用时参数数量不对, 
-比如 make_strawberry_banana_smoothie(2, 1), 
-Python 会报错, 因为它发现你没有按照配方准备好所有原料。
+参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。
+Python的函数具有非常灵活的参数形态，既可以实现简单的调用，又可以传入非常复杂的参数。
+默认参数一定要用不可变对象，如果是可变对象，程序运行时会有逻辑错误！
+要注意定义可变参数和关键字参数的语法：
+*args是可变参数，args接收的是一个tuple；
+**kw是关键字参数，kw接收的是一个dict。
+以及调用函数时如何传入可变参数和关键字参数的语法：
+可变参数既可以直接传入：func(1, 2, 3)，又可以先组装list或tuple，再通过*args传入：func(*(1, 2, 3))；
+关键字参数既可以直接传入：func(a=1, b=2)，又可以先组装dict，再通过**kw传入：func(**{'a': 1, 'b': 2})。
+使用*args和**kw是Python的习惯写法，当然也可以用其他参数名，但最好使用习惯用法。
+命名的关键字参数是为了限制调用者可以传入的参数名，同时可以提供默认值。
+定义命名的关键字参数在没有可变参数的情况下不要忘了写分隔符*，否则定义的将是位置参数。
 '''
-def make_strawberry_banana_smoothie(strawberries, bananas, milk):
-    print(f"我用 {strawberries} 颗草莓、{bananas} 根香蕉和 {milk} 毫升牛奶制作了一杯草莓香蕉奶昔。")
 
-'''按照配方制作奶昔'''
-make_strawberry_banana_smoothie(2, 1, 200)
+# 位置参数
+def power(x):
+    xx = x ** 2
+    print(f'位置参数函数测试, 乘方函数调用成功, 数字{x}的乘方是{xx}')
+power(6)
 
+# 默认参数
+# 必选参数在前，默认参数在后，否则Python的解释器会报错
+def multiply(x, y = 10):
+    xy = x ** y
+    if y == 10:
+        print(f'默认参数函数测试, 相乘函数调用成功, 调用默认值, y = {y}, 数字{x}的{y}次方是{xy}')
+    else:
+        print(f'默认参数函数测试, 相乘函数调用成功, 覆盖默认值, y = {y}, 数字{x}的{y}次方是{xy}')
+    return xy
+multiply(6)
+multiply(6, 6)
 
+# 可变参数
+# *args是可变参数，args接收的是一个tuple
+def infinitemultiply(*args):
+    result = 1
+    for arg in args:
+        result = arg * result
+    print(f'可变参数函数测试, 无限制相乘函数调用成功, {args}中的数字相乘后是{result}')
+    return result
+infinitemultiply(1, 2, 3, 4)
+
+testlist = ['Ub6MzxjzqbTA', 
+'ghtaj72E7zmZ', 
+'6BNssyNzyV1M', 
+'Csnhh0bRqgL0', 
+'TlNyVbb4vAVX']
+def TESTLIST(*args):
+    print('可变参数可以先组装list或tuple，再通过*args传入')
+    for arg in args:
+        print(f'组装list或tuple，再通过*args传入示例{arg}')
+TESTLIST(*testlist)
+
+# 关键字参数
+# **kw是关键字参数，kw接收的是一个dict
+def keywordparameter1(**kw):
+    print(f'关键字参数函数测试, 关键字参数函数调用成功\n{kw}')
+keywordparameter1(关键字参数key1 = '关键字参数value, 字符串', 关键字参数key2 = 99, 关键字参数key3 = [1, 2, 3, 4])
+
+# 如果要限制关键字参数的名字，就可以用命名关键字参数
+# 例如，只接收name和city作为关键字参数。这种方式定义的函数如下：
+def keywordparameter2(*, name, city):
+    print(f'命名关键字参数函数测试, 命名关键字参数函数调用成功\n{name}\n{city}')
+keywordparameter2(name = 'jun', city = 'guangzhou')
 '''
-默认参数
-定义默认参数要牢记一点：默认参数必须指向不变对象！
-'''
-def power2(x, n = 64):
-    value = x ** n
-    return value
-result = power2(2, )
-print(result)
-
-# 而对于n不等于64的其他情况, 就必须明确地传入n
-result = power2(2, 3)
-print(result)
-
-'''
-也可以不按顺序提供部分默认参数。
-当不按顺序提供部分默认参数时, 需要把参数名写上。
-非默认参数必须在默认参数之前。
-'''
-result = power2(2, n = 4)
-print(result)
-
-'''
-可变参数
-如同特色自由搭配奶昔, 
-在基础原料的基础上, 允许顾客自由添加额外的水果, 
-添加的数量和种类都不固定。
-在函数里, 可变参数会把传入的额外参数打包成一个元组来处理。
-
-make_custom_smoothie 函数有三个位置参数
- strawberries、bananas、milk, 
-还有一个可变参数 *extra_fruits。
-当调用 make_custom_smoothie(2, 1, 200, "3 颗蓝莓", "1 片芒果") 时, 
-2、1、200 分别对应位置参数, 
-而 "3 颗蓝莓" 和 "1 片芒果" 会被打包成一个元组, 
-赋值给 extra_fruits。
-若调用 make_custom_smoothie(2, 1, 200), 没有传入额外水果, 
-那么 extra_fruits 就是一个空元组。
-也就是说, 顾客可以选择不添加额外水果, 只用基础原料制作奶昔。
-定义一个名为 make_custom_smoothie 的函数, 用于制作特色自由搭配奶昔
-该函数接收三个位置参数 strawberries（草莓数量）、bananas（香蕉数量）、milk（牛奶毫升数）
-以及一个可变参数 *extra_fruits, 用于接收顾客额外添加的水果信息
+命名关键字参数必须传入参数名，这和位置参数不同。如果没有传入参数名，调用将报错：
+keywordparameter2()
+Traceback (most recent call last):
+  File "c:/Users/admin/Desktop/jun/python/lxf/01_function/Parameter.py", line 41, in <module>
+    keywordparameter2()
+TypeError: keywordparameter2() missing 2 required keyword-only arguments: 'name' and 'city'
 '''
 
 '''
-制作一杯添加额外水果的奶昔函数
+函数定义：TESTDICT 函数使用 **kw 这种可变关键字参数来接收任意数量的关键字参数，这些参数会被打包成一个字典。
+遍历键值对：在函数内部，使用 kw.items() 方法获取字典 kw 的所有键值对视图，然后通过 for 循环将每个键值对解包为 key 和 value 变量，最后打印出键和值。
+函数调用：使用 **testdict 对字典 testdict 进行解包，将其键值对作为关键字参数传递给 TESTDICT 函数。
 '''
-def make_custom_smoothie(strawberries, bananas, milk, *extra_fruits):
-    '''
-    创建一个字符串 fruit_info, 用于存储制作奶昔所使用的基础原料信息
-    这里使用 f 字符串将传入的 strawberries、bananas 和 milk 的值格式化到字符串中
-    '''
-    fruit_info = f"{strawberries} 颗草莓、{bananas} 根香蕉和 {milk} 毫升牛奶"
-    '''
-    使用 if 语句检查可变参数 extra_fruits 是否包含元素
-    如果 extra_fruits 不为空元组, 说明顾客添加了额外的水果
-    '''
-    if extra_fruits:
-        '''
-        使用字符串的 join 方法将 extra_fruits 元组中的元素用逗号连接成一个字符串
-        存储在 extra_fruit_str 变量中
-        将额外水果的信息添加到基础原料信息后面
-        形成包含所有原料信息的新字符串
-        '''
-        extra_fruit_str = ", ".join(extra_fruits)
-        fruit_info = fruit_info + ", 额外添加了 " + extra_fruit_str
-    '''
-    使用 print 函数输出最终的原料信息, 表明用这些原料制作了一杯特色自由搭配奶昔
-    '''
-    print(f"我用 {fruit_info} 制作了一杯特色自由搭配奶昔。")
-
-
-'''制作一杯添加额外水果的奶昔'''
-make_custom_smoothie(2, 1, 200, "3 颗蓝莓", "1 片芒果")
-'''制作一杯不添加额外水果的奶昔'''
-make_custom_smoothie(2, 1, 200)
-
-'''
-可变参数例子2
-加法
-'''
-def addfunction(*addnum):
-    print(f'''\n正在调用加法函数...
-正在打印参数...
-当前的参数为{addnum}''')
-    return sum(addnum)
-
-result = addfunction(1, 2, 3, 4)
-print(f'函数输出为{result}')
+testdict = {
+    'pDJZjRm02Syu': '3rDIy5VGtsRv', 
+    'TzBloJvjCRxc': 'IY0BmP7esX27', 
+    'BM1tYBi8k6Lt': 'JDozMnRsqXV1', 
+    'vebghmPfwolR': 'gx0QnMqFpJn8', 
+    'wFwpAIkPdaPl': 'OWWeoSfRy4f5'
+}
+def TESTDICT(**kw):
+    print('关键字参数可以先组装dict，再通过**kw传入')
+    for key, value in kw.items():
+        print(f'组装dict，再通过**kw传入示例键: {key}, 值: {value}')
+TESTDICT(**testdict)

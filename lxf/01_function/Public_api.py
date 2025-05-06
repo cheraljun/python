@@ -42,5 +42,7 @@ def randomid():
         return None
 
 print(loveword())
-print(historytoday())
+result = historytoday()
+for story in result:
+    print(story)
 print(randomid())

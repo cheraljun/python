@@ -1,6 +1,6 @@
 git add lxf readme.md
 
-git commit -m "更新函数部分"
+git commit -m "更新参数部分"
 
 git remote add origin git@github.com:cheraljun/python.git
 
