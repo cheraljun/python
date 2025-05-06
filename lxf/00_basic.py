@@ -207,6 +207,11 @@ print(L)
 print(len(L))
 print('示例结束：创建空列表')
 
+print('列表生成')
+L = list(range(1, 101, 1)) # range函数左开右闭
+print(L)
+print('列表生成结束')
+
 # 2.9 元组（tuple）
 # 另一种有序列表叫元组：tuple。tuple 和 list 非常类似, 但是 tuple 一旦初始化就不能修改
 print('示例开始：创建和查看元组')

@@ -72,3 +72,15 @@ def nothing():
     print('正在调用空函数, 此函数不执行\n结束函数的执行!\n')
     pass
 nothing()
+
+'''
+递归函数
+'''
+def factorial(x):
+    # 递归终止条件
+    if x == 1:
+        return 1
+    # 递归调用
+    result = x * factorial(x - 1)
+    return result
+print(factorial(10))

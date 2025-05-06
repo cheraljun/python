@@ -1,6 +1,6 @@
 git add lxf readme.md
 
-git commit -m "更新参数部分"
+git commit -m "参数部分更新完毕，definition添加递归函数，6.函数学习结束！"
 
 git remote add origin git@github.com:cheraljun/python.git
 
