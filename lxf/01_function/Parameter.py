@@ -41,11 +41,11 @@ def infinitemultiply(*args):
     return result
 infinitemultiply(1, 2, 3, 4)
 
-testlist = ['Ub6MzxjzqbTA', 
-'ghtaj72E7zmZ', 
-'6BNssyNzyV1M', 
-'Csnhh0bRqgL0', 
-'TlNyVbb4vAVX']
+testlist = ['Ub6', 
+'ght', 
+'6BN', 
+'Csn', 
+'TlN']
 def TESTLIST(*args):
     print('可变参数可以先组装list或tuple，再通过*args传入')
     for arg in args:
@@ -78,11 +78,11 @@ TypeError: keywordparameter2() missing 2 required keyword-only arguments: 'name'
 函数调用：使用 **testdict 对字典 testdict 进行解包，将其键值对作为关键字参数传递给 TESTDICT 函数。
 '''
 testdict = {
-    'pDJZjRm02Syu': '3rDIy5VGtsRv', 
-    'TzBloJvjCRxc': 'IY0BmP7esX27', 
-    'BM1tYBi8k6Lt': 'JDozMnRsqXV1', 
-    'vebghmPfwolR': 'gx0QnMqFpJn8', 
-    'wFwpAIkPdaPl': 'OWWeoSfRy4f5'
+    'pDJ': '3rD', 
+    'TzB': 'IY0', 
+    'BM1': 'JDo', 
+    'veb': 'gx0', 
+    'wFw': 'OWW'
 }
 def TESTDICT(**kw):
     print('关键字参数可以先组装dict，再通过**kw传入')
