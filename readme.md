@@ -1,6 +1,6 @@
 git add lxf readme.md
 
-git commit -m "迭代器，生成器"
+git commit -m "8.1. 高阶函数8.2. 返回函数8.3. 匿名函数"
 
 git remote add origin git@github.com:cheraljun/python.git
 
@@ -16,3 +16,4 @@ git push origin master
 ```
 print('这是一个混乱的例子', '去年成绩', lyscore, '今年成绩', tyscore, '提升率', f'{up:.1f}%',)
 ```
+# 高阶函数，初步了解，求素数还没理解。

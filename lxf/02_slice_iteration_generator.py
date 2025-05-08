@@ -48,6 +48,12 @@ print(f'第1次调用:{next(Lb)}')
 print(f'第2次调用:{next(Lb)}')
 print(f'第3次调用:{next(Lb)}')
 
+'''if ... else
+使用列表生成式的时候，有些童鞋经常搞不清楚if...else的用法。
+在一个列表生成式中，for前面的if ... else是表达式，而for后面的if是过滤条件，不能带else。'''
+print([x for x in range(1, 11, 1) if x % 2 == 0])
+print([x if x % 2 == 0 else -x for x in range(1, 11)])
+
 '''生成器函数
 首先定义一个普通函数'''
 def normal_function():
