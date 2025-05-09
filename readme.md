@@ -1,6 +1,6 @@
 git add lxf readme.md
 
-git commit -m "8.1. 高阶函数8.2. 返回函数8.3. 匿名函数"
+git commit -m "8. 函数式编程"
 
 git remote add origin git@github.com:cheraljun/python.git
 

@@ -17,8 +17,17 @@ except ExceptionType:
     可以有多个 except 块, 用于捕获不同类型的异常, 也可以使用一个通用的 except 块（如 except Exception）
     来捕获所有类型的异常, 但在实际应用中, 尽量明确指定要捕获的异常类型, 以提高代码的可读性和调试性。
 '''
+
+def log(func):
+    def wrapper(*args, **kwargs):
+        print(f'正在启动{func.__name__}函数!')
+        result = func(*args, **kwargs)
+        print(f'{func.__name__}函数正常执行!')
+        return result
+    return wrapper
+
+@log
 def wifeage():
-    print('欢迎使用: 计算老婆年龄函数')
     count = 0
     # 开启一个无限循环, 该循环会持续运行, 直到满足特定条件（如使用 break 或 return 语句）跳出循环
     # 这里的目的是持续提示用户输入, 直到输入正确答案
@@ -29,7 +38,7 @@ def wifeage():
             count = count + 1
             print('数据正确!')
             if age >= 0:
-                print(f'函数调用成功!\n我老婆出生{age}年啦~!\n结束函数的执行!\n')
+                print(f'我老婆出生{age}年啦~!')
                 # 输入正确后, 使用 return 语句返回当前年龄, 同时结束函数的执行
                 # 由于函数结束, while 循环也会随之终止
                 return age
@@ -42,24 +51,25 @@ def wifeage():
             # 变量 e 是捕获到的异常对象, 它包含了异常的相关信息, 如异常类型、错误消息等
             # 打印异常提示信息, 提醒用户仔细查看后重新输入
             print(f'数据不对, 看清楚再重来: {e}')
+
 wifeage()
 
 '''
 返回多个值的函数, Python的函数返回多值其实就是返回一个tuple
 '''
+@log
 def double():
-    print('欢迎使用:double函数!请输入3个整数')
     while True:
         try:
             x = int(input('x=?'))
             y = int(input('y=?'))
             z = int(input('z=?'))
             print('正在检查数据...')
-            print(f'输入正确!正在调用double函数...\n您输入了{x}, {y}, {z}')
+            print(f'您输入了{x}, {y}, {z}')
             x2 = x * 2
             y2 = y * 2
             z2 = z * 2
-            print(f'函数调用成功!\n正在分别计算{x}, {y}, {z}的2倍...\n{x}, {y}, {z}的2倍分别为{x2}, {y2}, {z2}!\n结束函数的执行!\n')
+            print(f'正在分别计算{x}, {y}, {z}的2倍...\n{x}, {y}, {z}的2倍分别为{x2}, {y2}, {z2}!')
             return(x, y, z)
         except Exception as e:
             print(f'???输入的啥?重来!看清楚可用的数据类型: {e}')
@@ -68,19 +78,19 @@ print(f'这是函数的返回值{double()}')
 '''
 空函数
 '''
+@log
 def nothing():
-    print('正在调用空函数, 此函数不执行\n结束函数的执行!\n')
+    print('此函数不执行')
     pass
 nothing()
 
 '''
 递归函数
 '''
+@log
 def factorial(x):
-    # 递归终止条件
-    if x == 1:
+    if x == 1: # 递归终止条件
         return 1
-    # 递归调用
-    result = x * factorial(x - 1)
+    result = x * factorial(x - 1) # 递归调用
     return result
 print(factorial(10))
