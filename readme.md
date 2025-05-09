@@ -1,6 +1,6 @@
 git add lxf readme.md
 
-git commit -m "8. 函数式编程"
+git commit -m "10.1. 类和实例"
 
 git remote add origin git@github.com:cheraljun/python.git
 

@@ -2,7 +2,7 @@ import requests
 
 def log(func):
     def wrapper(*args, **kwargs):
-        apiname = '黄金'
+        apiname = ''
         print(f'正在调用{apiname}api...正在启动{func.__name__}函数!')
         result = func(*args, **kwargs)
         print(f'{apiname}api调用成功!{func.__name__}函数正常执行!')
