@@ -1,6 +1,6 @@
 git add lxf readme.md
 
-git commit -m "10.1. 类和实例"
+git commit -m "面向对象编程学习完成"
 
 git remote add origin git@github.com:cheraljun/python.git
 

@@ -2,7 +2,7 @@
 属性是类用于存储数据的成员，方法是类中定义的函数，方法可以使用属性来实现各种操作，
 但方法的功能和用途不止于属性的使用，属性也可以在类的外部被访问和操作 。
 '''
-class Friend(object):
+class Friend:
     pass
 '''
 创建实例是通过类名+()实现的：
@@ -23,7 +23,7 @@ print(f1.name, f2.name)
 和普通的函数相比，在类中定义的函数只有一点不同，就是第一个参数永远是实例变量self，并且，调用时，不用传递该参数。
 除此之外，类的方法和普通函数没有什么区别，所以，你仍然可以用默认参数、可变参数、关键字参数和命名关键字参数。
 '''
-class Wife(object): # 定义一个名为 Wife 的类，继承自 object（在 Python 3 中，所有类默认继承自 object）
+class Wife: # 定义一个名为 Wife 的类
     def __init__(self, name, age, hobby, *args, **kwargs): # __init__ 是类的构造方法，用于在创建实例时初始化实例属性
         self.name = name
         self.age = age

@@ -1,20 +1,37 @@
 import requests
+import time
+class Api():
+    def __init__(self, baseurl, param = ''):
+        self.baseurl = baseurl
+        self.param = param
 
-def log(func):
-    def wrapper(*args, **kwargs):
-        apiname = ''
-        print(f'正在调用{apiname}api...正在启动{func.__name__}函数!')
-        result = func(*args, **kwargs)
-        print(f'{apiname}api调用成功!{func.__name__}函数正常执行!')
-        return result
-    return wrapper
+    def search(self):
+        while True:
+            try:
+                print(f'{self.baseurl}{self.param}')
+                result = requests.get(f'{self.baseurl}{self.param}').text
+                if result:
+                    print(result)
+                    return result
+            except Exception as e:
+                    print(f'{e}\nretry?')
+                    time.sleep(1)
+                    continue
 
-@log
-def gold():
+gold = Api('https://api.pearktrue.cn/api/goldprice/') # 获取最新的黄金价格以及各种黄金的详细信息
+gold.search()
+
+recipe = Api('https://api.pearktrue.cn/api/cookbook/?search=', '鸡蛋布丁') # 查询菜谱信息，包括简介，材料，做法
+recipe.search()
+
+baidumap = Api('https://api.pearktrue.cn/api/baidumap/?keyword=', '广州') # 通过地名检索相关地点显示基础信息
+baidumap.search()
+
+'''while True:
     try:
-        result = requests.get('https://api.pearktrue.cn/api/goldprice/').text
-        print(result)
-        return result
+        resp = requests.get('https://api.pearktrue.cn/api/baidumap/?keyword=广州').text
+        if resp:
+            print(resp)
     except Exception as e:
-        print(f'出现错误, 错误信息: {e}')
-gold()
+        print(f'{e}')
+        continue'''
