@@ -1,6 +1,6 @@
 git add lxf readme.md
 
-git commit -m "删去模块知识，意义不大"
+git commit -m "学会OS IO基础操作分清楚path和directory很重要。"
 
 git remote add origin git@github.com:cheraljun/python.git
 
