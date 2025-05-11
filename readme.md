@@ -1,6 +1,6 @@
 git add lxf readme.md
 
-git commit -m "面向对象编程学习完成,明天学习IO操作!"
+git commit -m "删去模块知识，意义不大"
 
 git remote add origin git@github.com:cheraljun/python.git
 
